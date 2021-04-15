@@ -22,15 +22,15 @@ describe Game do
     end
   end
 
-  context '#current_player' do
-    it 'begins a player one' do
+  context "#current_player" do
+    it "begins a player one" do
       expect(subject.current_player).to eq subject.player_1
     end
   end
 
-  context '#switch_turn' do
-    it 'switches the turn' do
-      expect{ subject.switch_turn }.to change{ subject.current_player }.to subject.player_2
+  context "#switch_turn" do
+    it "switches the turn" do
+      expect { subject.switch_turn }.to change { subject.current_player }.to subject.player_2
     end
   end
 end

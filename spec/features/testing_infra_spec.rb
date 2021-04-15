@@ -42,8 +42,26 @@ feature "switching turns" do
   scenario "after player one attacks" do
     sign_in_and_play
     click_button "Attack"
-    click_link 'test'
+    click_link "test"
     expect(page).not_to have_text("Player One's turn")
     expect(page).to have_text("Player Two's turn")
+  end
+end
+
+feature "Seeing both players' points" do
+  scenario "it show's both player's points" do
+    sign_in_and_play
+    expect(page).to have_text("Player One: 60HP")
+    expect(page).to have_text("Player Two: 60HP")
+  end
+
+  scenario "it shows scores until won!" do
+    sign_in_and_play
+    click_button "Attack"
+    click_link "test"
+    click_button "Attack"
+    click_link "test"
+    expect(page).to have_text("Player One: 50HP")
+    expect(page).to have_text("Player Two: 50HP")
   end
 end
