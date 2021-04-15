@@ -32,3 +32,18 @@ feature "Attack a player" do
     expect(page).to have_text("Player Two: 50HP")
   end
 end
+
+feature "switching turns" do
+  scenario "start of the game" do
+    sign_in_and_play
+    expect(page).to have_text("Player One's turn")
+  end
+
+  scenario "after player one attacks" do
+    sign_in_and_play
+    click_button "Attack"
+    click_link 'test'
+    expect(page).not_to have_text("Player One's turn")
+    expect(page).to have_text("Player Two's turn")
+  end
+end

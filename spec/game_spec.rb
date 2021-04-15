@@ -17,9 +17,20 @@ describe Game do
 
   context "#attack" do
     it "should reduce the player's HP" do
-      game = Game.new(mike, jason)
       expect(mike).to receive(:is_attacked).and_return(50)
       subject.attack(mike)
+    end
+  end
+
+  context '#current_player' do
+    it 'begins a player one' do
+      expect(subject.current_player).to eq subject.player_1
+    end
+  end
+
+  context '#switch_turn' do
+    it 'switches the turn' do
+      expect{ subject.switch_turn }.to change{ subject.current_player }.to subject.player_2
     end
   end
 end
