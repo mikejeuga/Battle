@@ -1,3 +1,9 @@
-<session>
-<%= session[:player_1] %> Vs <%= session[:player_2] %> 
-</session>
+
+<%= @player_1.name %> Vs <%= @player_2.name %>
+
+<%= @player_2.name %>: 60HP
+
+<form action="/attack">
+  <input type="submit" value="Attack">
+</form>
+
